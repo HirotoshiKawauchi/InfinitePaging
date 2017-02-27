@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="infiniteTabPaging" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,73 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEP-el-4c7" customClass="TabScrollView" customModule="infiniteTabPaging" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="WSv-0s-Ysb"/>
+                                </constraints>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSc-J0-1cn">
+                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ed0-Bo-EIo">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdz-Tr-9GS">
+                                        <rect key="frame" x="375" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9x3-wc-xDZ">
+                                        <rect key="frame" x="750" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9x3-wc-xDZ" secondAttribute="trailing" id="2GK-3M-Rtc"/>
+                                    <constraint firstItem="ed0-Bo-EIo" firstAttribute="leading" secondItem="kSc-J0-1cn" secondAttribute="leading" id="7po-DB-jeK"/>
+                                    <constraint firstItem="9x3-wc-xDZ" firstAttribute="leading" secondItem="hdz-Tr-9GS" secondAttribute="trailing" id="8Bm-ok-KpR"/>
+                                    <constraint firstItem="9x3-wc-xDZ" firstAttribute="leading" secondItem="hdz-Tr-9GS" secondAttribute="trailing" id="TTt-N7-nl1"/>
+                                    <constraint firstAttribute="bottom" secondItem="9x3-wc-xDZ" secondAttribute="bottom" id="V2t-cx-Dd7"/>
+                                    <constraint firstItem="9x3-wc-xDZ" firstAttribute="top" secondItem="kSc-J0-1cn" secondAttribute="top" id="VIL-KV-Xoa"/>
+                                    <constraint firstItem="hdz-Tr-9GS" firstAttribute="leading" secondItem="ed0-Bo-EIo" secondAttribute="trailing" id="XJk-ZQ-Cdc"/>
+                                    <constraint firstItem="hdz-Tr-9GS" firstAttribute="leading" secondItem="ed0-Bo-EIo" secondAttribute="trailing" id="hxe-e2-s2Q"/>
+                                    <constraint firstAttribute="bottom" secondItem="ed0-Bo-EIo" secondAttribute="bottom" id="pp9-l2-1KL"/>
+                                    <constraint firstItem="ed0-Bo-EIo" firstAttribute="top" secondItem="kSc-J0-1cn" secondAttribute="top" id="seA-SQ-W4N"/>
+                                    <constraint firstItem="hdz-Tr-9GS" firstAttribute="top" secondItem="kSc-J0-1cn" secondAttribute="top" id="yRc-5f-6B4"/>
+                                    <constraint firstAttribute="bottom" secondItem="hdz-Tr-9GS" secondAttribute="bottom" id="zNr-JB-ojg"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ZGz-cb-XuA"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9x3-wc-xDZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="353-n5-BaT"/>
+                            <constraint firstAttribute="trailing" secondItem="VEP-el-4c7" secondAttribute="trailing" id="4PZ-tG-kIY"/>
+                            <constraint firstItem="ed0-Bo-EIo" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="7SU-EF-ST5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kSc-J0-1cn" secondAttribute="bottom" id="IGo-lX-CL5"/>
+                            <constraint firstItem="VEP-el-4c7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="IX4-h5-rgz"/>
+                            <constraint firstItem="kSc-J0-1cn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Nc6-7F-kcG"/>
+                            <constraint firstItem="hdz-Tr-9GS" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="P22-KI-5Qj"/>
+                            <constraint firstItem="kSc-J0-1cn" firstAttribute="top" secondItem="VEP-el-4c7" secondAttribute="bottom" id="WpS-5l-aYB"/>
+                            <constraint firstAttribute="trailing" secondItem="kSc-J0-1cn" secondAttribute="trailing" id="fbX-Rt-N1g"/>
+                            <constraint firstItem="hdz-Tr-9GS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="nVj-8h-ijn"/>
+                            <constraint firstItem="9x3-wc-xDZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="wFy-Cl-fYS"/>
+                            <constraint firstItem="ed0-Bo-EIo" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="wLw-4D-FoV"/>
+                            <constraint firstItem="VEP-el-4c7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="z8T-QM-vhm"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pagingScrollView" destination="kSc-J0-1cn" id="dVX-b6-B91"/>
+                        <outlet property="tabScrollView" destination="VEP-el-4c7" id="70v-fk-iAa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>

@@ -14,6 +14,11 @@
 		96CCDA671E606F7D00895C12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96CCDA651E606F7D00895C12 /* LaunchScreen.storyboard */; };
 		96CCDA721E606F7D00895C12 /* infiniteTabPagingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CCDA711E606F7D00895C12 /* infiniteTabPagingTests.swift */; };
 		96CCDA7D1E606F7D00895C12 /* infiniteTabPagingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CCDA7C1E606F7D00895C12 /* infiniteTabPagingUITests.swift */; };
+		96CCDA8F1E60720400895C12 /* TabScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CCDA8E1E60720400895C12 /* TabScrollView.swift */; };
+		96CCDA931E607D2800895C12 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CCDA921E607D2800895C12 /* TabView.swift */; };
+		96CCDA951E607D3900895C12 /* TabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CCDA941E607D3900895C12 /* TabView.xib */; };
+		96CCDA991E60825400895C12 /* ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CCDA981E60825400895C12 /* ContentView.xib */; };
+		96CCDA9B1E60826A00895C12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CCDA9A1E60826A00895C12 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		96CCDA781E606F7D00895C12 /* infiniteTabPagingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = infiniteTabPagingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CCDA7C1E606F7D00895C12 /* infiniteTabPagingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infiniteTabPagingUITests.swift; sourceTree = "<group>"; };
 		96CCDA7E1E606F7D00895C12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96CCDA8E1E60720400895C12 /* TabScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabScrollView.swift; sourceTree = "<group>"; };
+		96CCDA921E607D2800895C12 /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		96CCDA941E607D3900895C12 /* TabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabView.xib; sourceTree = "<group>"; };
+		96CCDA981E60825400895C12 /* ContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentView.xib; sourceTree = "<group>"; };
+		96CCDA9A1E60826A00895C12 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,11 @@
 				96CCDA631E606F7D00895C12 /* Assets.xcassets */,
 				96CCDA651E606F7D00895C12 /* LaunchScreen.storyboard */,
 				96CCDA681E606F7D00895C12 /* Info.plist */,
+				96CCDA8E1E60720400895C12 /* TabScrollView.swift */,
+				96CCDA921E607D2800895C12 /* TabView.swift */,
+				96CCDA941E607D3900895C12 /* TabView.xib */,
+				96CCDA9A1E60826A00895C12 /* ContentView.swift */,
+				96CCDA981E60825400895C12 /* ContentView.xib */,
 			);
 			path = infiniteTabPaging;
 			sourceTree = "<group>";
@@ -235,6 +250,8 @@
 				96CCDA671E606F7D00895C12 /* LaunchScreen.storyboard in Resources */,
 				96CCDA641E606F7D00895C12 /* Assets.xcassets in Resources */,
 				96CCDA621E606F7D00895C12 /* Main.storyboard in Resources */,
+				96CCDA991E60825400895C12 /* ContentView.xib in Resources */,
+				96CCDA951E607D3900895C12 /* TabView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96CCDA931E607D2800895C12 /* TabView.swift in Sources */,
+				96CCDA9B1E60826A00895C12 /* ContentView.swift in Sources */,
 				96CCDA5F1E606F7D00895C12 /* ViewController.swift in Sources */,
 				96CCDA5D1E606F7D00895C12 /* AppDelegate.swift in Sources */,
+				96CCDA8F1E60720400895C12 /* TabScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
