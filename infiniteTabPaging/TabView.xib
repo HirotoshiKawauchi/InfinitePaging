@@ -33,6 +33,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="leadingMargin" destination="IgO-oC-FFD" id="lKa-pJ-69s"/>
+                <outlet property="titleLabel" destination="10y-Rd-JW0" id="DdA-V0-Gtw"/>
                 <outlet property="trailingMargin" destination="Jqd-5a-fuc" id="Tgv-2y-Ibu"/>
             </connections>
             <point key="canvasLocation" x="-41" y="-251.5"/>

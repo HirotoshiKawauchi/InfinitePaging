@@ -22,7 +22,9 @@ class ViewController: UIViewController {
     }
     
     private func setup() {
-        let titles: [String] = ["ho", "hoge", "hogeho", "hog", "hogehoge"]
+        let titles: [String] = ["ねずみ", "うし", "とら", "う",
+                                "たつ", "へび", "うま", "ひつじ",
+                                "さる", "とり", "いぬ", "いのしし"]
         for title in titles {
             let contentView = ContentView.view()
             contentView.frame = view.bounds
@@ -32,6 +34,7 @@ class ViewController: UIViewController {
         
         selectedView(view: contentViews.first!, animated: true)
         
+        tabScrollView.setup(pagingViewList: contentViews)
         pagingScrollView.contentOffset.x = UIScreen.main.bounds.width
     }
     
