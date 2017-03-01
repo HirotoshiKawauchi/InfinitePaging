@@ -26,6 +26,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="WSv-0s-Ysb"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Klb-od-495"/>
+                                </connections>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83C-Vv-slM" customClass="TabScrollView" customModule="infiniteTabPaging" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="45"/>
                             </scrollView>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSc-J0-1cn">
                                 <rect key="frame" x="0.0" y="65" width="375" height="602"/>
@@ -64,13 +70,17 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="kSc-J0-1cn" firstAttribute="top" secondItem="83C-Vv-slM" secondAttribute="bottom" id="15J-aL-zEE"/>
                             <constraint firstItem="9x3-wc-xDZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="353-n5-BaT"/>
                             <constraint firstAttribute="trailing" secondItem="VEP-el-4c7" secondAttribute="trailing" id="4PZ-tG-kIY"/>
+                            <constraint firstAttribute="trailing" secondItem="83C-Vv-slM" secondAttribute="trailing" id="7Mh-bs-ZFS"/>
                             <constraint firstItem="ed0-Bo-EIo" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="7SU-EF-ST5"/>
+                            <constraint firstItem="83C-Vv-slM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="AdV-Ry-Ytb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kSc-J0-1cn" secondAttribute="bottom" id="IGo-lX-CL5"/>
                             <constraint firstItem="VEP-el-4c7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="IX4-h5-rgz"/>
                             <constraint firstItem="kSc-J0-1cn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Nc6-7F-kcG"/>
                             <constraint firstItem="hdz-Tr-9GS" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="P22-KI-5Qj"/>
+                            <constraint firstItem="83C-Vv-slM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PZD-SY-ujN"/>
                             <constraint firstItem="kSc-J0-1cn" firstAttribute="top" secondItem="VEP-el-4c7" secondAttribute="bottom" id="WpS-5l-aYB"/>
                             <constraint firstAttribute="trailing" secondItem="kSc-J0-1cn" secondAttribute="trailing" id="fbX-Rt-N1g"/>
                             <constraint firstItem="hdz-Tr-9GS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="nVj-8h-ijn"/>
@@ -81,6 +91,7 @@
                     </view>
                     <connections>
                         <outlet property="pagingScrollView" destination="kSc-J0-1cn" id="dVX-b6-B91"/>
+                        <outlet property="selectionTabScrollView" destination="83C-Vv-slM" id="ihg-Kb-Hj8"/>
                         <outlet property="tabScrollView" destination="VEP-el-4c7" id="70v-fk-iAa"/>
                     </connections>
                 </viewController>

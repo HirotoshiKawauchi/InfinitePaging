@@ -13,10 +13,17 @@ class TabScrollView: UIScrollView {
     
     var tabItemWidth: CGFloat = 0.0
     
-    func setup(pagingViewList: [ContentView]) {
+    var tabViews: [TabView] {
+        return contentView.subviews.flatMap({ $0 as? TabView })
+    }
+    
+    var visibleFrame: CGRect {
+        return convert(bounds, to: contentView)
+    }
+    
+    func setup(pagingViewList: [ContentView], isSelection: Bool = false) {
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = UIColor.blue
         let sizeConstraints: [NSLayoutConstraint] = [
             NSLayoutConstraint(item: contentView,
                                attribute: .height,
@@ -65,6 +72,7 @@ class TabScrollView: UIScrollView {
                 
                 let tabView = TabView.view()
                 tabView.translatesAutoresizingMaskIntoConstraints = false
+                tabView.backgroundColor = isSelection ? UIColor.red : UIColor.white
                 tabView.setup(title: title, replenishSurplusWidth: replenishSurplusWidth)
                 contentView.addSubview(tabView)
             }
