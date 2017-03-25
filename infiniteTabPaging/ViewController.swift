@@ -25,13 +25,22 @@ class ViewController: UIViewController {
     }
     
     private func setup() {
-        let titles: [String] = ["ねずみ", "うし", "とら", "う",
-                                "たつ", "へび", "うま", "ひつじ",
-                                "さる", "とり", "いぬ", "いのしし"]
-        for title in titles {
+        let titles: [String] = ["モルモラット", "ブルホーン", "タイグリス", "ラビーナ",
+                                "ドランシア", "ヴァイパー", "サラブレード", "ラム",
+                                "ハマーコング", "クックル", "ライカ", "ワイルドボウ"]
+        let contentKeys: [String] = ["A", "B", "C", "D",
+                                     "E", "F", "G", "H",
+                                     "I", "J", "K", "L"]
+        
+        var contents: [String: String] = [:]
+        for (index, key) in contentKeys.enumerated() {
+            contents[key] = titles[index]
+        }
+        
+        for content in contents {
             let contentView = ContentView.view()
             contentView.frame = view.bounds
-            contentView.setUp(title: title)
+            contentView.setUp(title: content.value, contentKey: content.key)
             contentViews.append(contentView)
         }
         
@@ -102,6 +111,14 @@ class ViewController: UIViewController {
         set(view: contentViews[(index + 1) % contentViews.count], at: .Right)
     }
     
+    func resetContentViewsPosition(centerIndex: Int) {
+        guard centerIndex < contentViews.count else {
+                return
+        }
+        
+        selectedView(view: contentViews[centerIndex], animated: false)
+    }
+    
     func removeViewAt(position: Position) {
         guard let view = viewAt(position: position) else {
             return
@@ -126,10 +143,23 @@ class ViewController: UIViewController {
     }
     
     func refreshSelectionMask() {
+        
+        let isTabMoving: Bool = pagingScrollView.contentOffset.x == pagingScrollView.bounds.width
+        
         guard let selectedView = selectedView,
-        let selectedIndex = contentViews.index(of: selectedView),
-        let nextView = viewAt(position: pagingScrollView.contentOffset.x < pagingScrollView.bounds.width ? .Left : .Right),
-        let nextIndex = contentViews.index(of: nextView) else {
+            let selectedIndex = contentViews.index(of: selectedView),
+            let nextView = viewAt(position: isTabMoving ? .Center : pagingScrollView.contentOffset.x < pagingScrollView.bounds.width ? .Left : .Right),
+            let nextIndex = contentViews.index(of: nextView) else {
+                return
+        }
+        
+        if isTabMoving,
+            let sortedNearerCenterTab = sortedNearerCenterTab,
+            sortedNearerCenterTab.count >= 2 {
+            let centerTab = sortedNearerCenterTab[0]
+            let nextTab = sortedNearerCenterTab[1]
+            let percent = abs(tabScrollView.visibleFrame.midX - centerTab.frame.midX) / abs(centerTab.frame.midX - nextTab.frame.midX)
+            updateSelectionMaskLayer(withPersent: percent, centerTabView: centerTab, nextTabView: nextTab)
             return
         }
         
@@ -138,12 +168,17 @@ class ViewController: UIViewController {
         let selectedTab = tabViews[selectedIndex]
         let nextTab = tabViews[nextIndex]
         
-        let width = selectedTab.bounds.width * (1 - percent) + nextTab.bounds.width * percent
-        let tabY = floor((tabScrollView.frame.height - (selectedTab.bounds.height - 10)) / 2)
+        updateSelectionMaskLayer(withPersent: percent, centerTabView: selectedTab, nextTabView: nextTab)
+    }
+    
+    private func updateSelectionMaskLayer(withPersent percent: CGFloat, centerTabView centerTab: TabView, nextTabView nextTab: TabView) {
+        let percent = abs(tabScrollView.visibleFrame.midX - centerTab.frame.midX) / abs(centerTab.frame.midX - nextTab.frame.midX)
+        let width = centerTab.bounds.width * (1 - percent) + nextTab.bounds.width * percent
+        let tabY = floor((tabScrollView.frame.height - (centerTab.bounds.height - 10)) / 2)
         let roundRect = CGRect(x: tabScrollView.visibleFrame.midX - (width / 2),
                                y: tabY,
                                width: width,
-                               height: selectedTab.bounds.height - 10)
+                               height: centerTab.bounds.height - 10)
         selectionMaskLayer.path = UIBezierPath(roundedRect: roundRect, cornerRadius: selectionMaskCornerRadius).cgPath
     }
     
@@ -259,6 +294,44 @@ extension ViewController: UIScrollViewDelegate {
         removeViewAt(position: position.inverse())
         selectedView(view: view, animated: true)
         pagingScrollView.contentOffset.x += (position == .Left ? 1 : -1) * pagingScrollView.bounds.width
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard scrollView === tabScrollView,
+            !decelerate else {
+            return
+        }
+        
+        moveToMostCenterTab()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard scrollView === tabScrollView else {
+            return
+        }
+        
+        moveToMostCenterTab()
+    }
+    
+    private func contentIndex(forContentKey key: String) -> Int? {
+        for (index, contentView) in contentViews.enumerated() {
+            if contentView.contentKey == key {
+                return index
+            }
+        }
+        
+        return nil
+    }
+    
+    private func moveToMostCenterTab() {
+        guard let mostCenterTab = sortedNearerCenterTab?.first,
+            let contentIndex = contentIndex(forContentKey: mostCenterTab.contentKey),
+            let centerIndex = tabScrollView.tabViews.index(of: mostCenterTab) else {
+                return
+        }
+        
+        resetContentViewsPosition(centerIndex: contentIndex)
+        scrollToHorizontalCenter(index: centerIndex, animated: true)
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {

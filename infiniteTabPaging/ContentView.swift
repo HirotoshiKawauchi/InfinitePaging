@@ -10,6 +10,7 @@ import UIKit
 
 class ContentView: UIView {
     var tabTitle: String?
+    var contentKey: String?
     @IBOutlet private weak var tabTitleLabel: UILabel!
     
     class func view() -> ContentView {
@@ -18,8 +19,9 @@ class ContentView: UIView {
         return view
     }
     
-    func setUp(title: String) {
-        self.tabTitle = title
+    func setUp(title: String, contentKey: String) {
+        tabTitle = title
         tabTitleLabel.text = title
+        self.contentKey = contentKey
     }
 }

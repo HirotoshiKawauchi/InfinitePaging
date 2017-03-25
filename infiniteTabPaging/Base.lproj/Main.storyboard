@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEP-el-4c7" customClass="TabScrollView" customModule="infiniteTabPaging" customModuleProvider="target">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEP-el-4c7" customClass="TabScrollView" customModule="infiniteTabPaging" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="WSv-0s-Ysb"/>
@@ -30,7 +30,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Klb-od-495"/>
                                 </connections>
                             </scrollView>
-                            <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83C-Vv-slM" customClass="TabScrollView" customModule="infiniteTabPaging" customModuleProvider="target">
+                            <scrollView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83C-Vv-slM" customClass="TabScrollView" customModule="infiniteTabPaging" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="45"/>
                             </scrollView>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSc-J0-1cn">
@@ -38,15 +38,54 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ed0-Bo-EIo">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="左" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RO-dr-lvb">
+                                                <rect key="frame" x="0.0" y="50" width="375" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="3RO-dr-lvb" secondAttribute="trailing" id="G2m-Dj-bWr"/>
+                                            <constraint firstItem="3RO-dr-lvb" firstAttribute="top" secondItem="ed0-Bo-EIo" secondAttribute="top" constant="50" id="Oub-Fb-Tgq"/>
+                                            <constraint firstItem="3RO-dr-lvb" firstAttribute="leading" secondItem="ed0-Bo-EIo" secondAttribute="leading" id="npQ-6F-WNm"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdz-Tr-9GS">
                                         <rect key="frame" x="375" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中央" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfy-ZY-CMc">
+                                                <rect key="frame" x="0.0" y="50" width="375" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="rfy-ZY-CMc" firstAttribute="leading" secondItem="hdz-Tr-9GS" secondAttribute="leading" id="9Ve-G3-BiM"/>
+                                            <constraint firstAttribute="trailing" secondItem="rfy-ZY-CMc" secondAttribute="trailing" id="KWx-bj-uJ9"/>
+                                            <constraint firstItem="rfy-ZY-CMc" firstAttribute="top" secondItem="hdz-Tr-9GS" secondAttribute="top" constant="50" id="zfb-UA-xLp"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9x3-wc-xDZ">
                                         <rect key="frame" x="750" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYq-RJ-AtW">
+                                                <rect key="frame" x="0.0" y="50" width="375" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="gYq-RJ-AtW" firstAttribute="leading" secondItem="9x3-wc-xDZ" secondAttribute="leading" id="2o0-H3-bbu"/>
+                                            <constraint firstItem="gYq-RJ-AtW" firstAttribute="top" secondItem="9x3-wc-xDZ" secondAttribute="top" constant="50" id="Wev-SF-1SP"/>
+                                            <constraint firstAttribute="trailing" secondItem="gYq-RJ-AtW" secondAttribute="trailing" id="nru-mk-MYa"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>

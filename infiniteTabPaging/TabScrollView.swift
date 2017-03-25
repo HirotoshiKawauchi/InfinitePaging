@@ -73,7 +73,8 @@ class TabScrollView: UIScrollView {
                 let tabView = TabView.view()
                 tabView.translatesAutoresizingMaskIntoConstraints = false
                 tabView.backgroundColor = isSelection ? UIColor.red : UIColor.white
-                tabView.setup(title: title, replenishSurplusWidth: replenishSurplusWidth)
+                tabView.setup(title: title, contentKey: pagingView.contentKey ?? "", replenishSurplusWidth: replenishSurplusWidth)
+                tabView.titleLabel.textColor = isSelection ? .white : .black
                 contentView.addSubview(tabView)
             }
         }

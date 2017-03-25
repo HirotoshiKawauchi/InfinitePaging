@@ -14,6 +14,7 @@ class TabView: UIView {
     @IBOutlet weak var trailingMargin: NSLayoutConstraint!
 
     @IBOutlet weak var titleLabel: UILabel!
+    var contentKey: String = ""
     class func view() -> TabView {
         return Bundle.main.loadNibNamed("TabView", owner: nil, options: nil)?.first as! TabView
     }
@@ -29,9 +30,11 @@ class TabView: UIView {
         return ceil(rect.width)
     }
     
-    func setup(title: String, replenishSurplusWidth: CGFloat = 0.0) {
+    func setup(title: String, contentKey: String, replenishSurplusWidth: CGFloat = 0.0) {
         titleLabel.text = title
         titleLabel.sizeToFit()
+        
+        self.contentKey = contentKey
         
         updateTabLayoutSize(replenishSurplusWidth: replenishSurplusWidth)
     }
