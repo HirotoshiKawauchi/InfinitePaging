@@ -172,7 +172,6 @@ class ViewController: UIViewController {
     }
     
     private func updateSelectionMaskLayer(withPersent percent: CGFloat, centerTabView centerTab: TabView, nextTabView nextTab: TabView) {
-        let percent = abs(tabScrollView.visibleFrame.midX - centerTab.frame.midX) / abs(centerTab.frame.midX - nextTab.frame.midX)
         let width = centerTab.bounds.width * (1 - percent) + nextTab.bounds.width * percent
         let tabY = floor((tabScrollView.frame.height - (centerTab.bounds.height - 10)) / 2)
         let roundRect = CGRect(x: tabScrollView.visibleFrame.midX - (width / 2),
